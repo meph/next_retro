@@ -82,3 +82,31 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Database Backup and Restore
+
+### Backup
+
+To create a backup of your PostgreSQL database, you can use the following command:
+
+```
+docker-compose exec db pg_dump -U myuser -d myapp > backup.sql
+```
+
+This command will create a backup of the `myapp` database and save it to a file named `backup.sql` in your current directory.
+
+### Restore
+
+To restore the database from a backup file, you can use the following command:
+
+```
+cat backup.sql | docker-compose exec -T db psql -U myuser -d myapp
+```
+
+This command will restore the `myapp` database from the `backup.sql` file.
+
+### Notes
+
+- Replace `myuser` with your actual PostgreSQL username.
+- Replace `myapp` with your actual PostgreSQL database name.
+- Ensure that the `db` service is running before executing these commands.
