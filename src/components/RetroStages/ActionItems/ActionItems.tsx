@@ -32,7 +32,7 @@ const ActionItems: React.FC<ActionItems> = ({ id, createdBy }) => {
       return acc;
     }, {} as { [key: string]: string });
 
-    fetch(new URL("/api/mailer", process.env.PROD_URL || "http://localhost:3000"), {
+    fetch(new URL("/api/mailer", process.env.NEXT_PUBLIC_PROD_URL || "http://localhost:3000"), {
       method: "POST",
       body: JSON.stringify({
         to: retro.everJoined,

@@ -6,7 +6,7 @@ let socket: Socket | null = null;
 
 export const getSocket = (): Socket => {
   if (!socket) {
-    socket = io(process.env.PROD_URL || "http://localhost:3000");
+    socket = io(process.env.NEXT_PUBLIC_PROD_URL || "http://localhost:3000");
   }
   return socket;
 };

@@ -21,7 +21,7 @@ export async function sendMail(request: Request) {
       from: process.env.GMAIL_EMAIL,
       bcc: to.join(", "),
       subject,
-      html: `<div>Summary of ${process.env.PROD_URL}/retros/${typedRetro.uId}</div>`.concat(generateSummaryHTML(typedRetro)),
+      html: `<div>Summary of ${process.env.NEXT_PUBLIC_PROD_URL}/retros/${typedRetro.uId}</div>`.concat(generateSummaryHTML(typedRetro)),
     };
     await transporter.sendMail(mailOptions);
     return NextResponse.json({ status: 200, message: `Email sent to ${to}` });
